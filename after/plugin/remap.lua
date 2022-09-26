@@ -28,8 +28,11 @@ nnoremap("<Leader>w+", "5<C-w>+")
 -- Maximize split
 nnoremap("<Leader>wo", "100<C-w>+ 100<C-w>>")
 
-nnoremap("<leader>ff","<cmd>Telescope find_files<cr>")
-nnoremap("<leader>fg","<cmd>Telescope live_grep<cr>")
-nnoremap("<leader>fb","<cmd>Telescope buffers<cr>")
-nnoremap("<leader>fh","<cmd>Telescope help_tags<cr>")
+nnoremap("<leader>ff", "<cmd>Telescope find_files<cr>")
+nnoremap("<leader>fg", "<cmd>Telescope live_grep<cr>")
+nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>")
+nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>")
+
+-- delete buffer
+nnoremap("<leader>bk", ":bd<CR>")
 
