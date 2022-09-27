@@ -49,4 +49,22 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     -- a bunch of snippets
     use 'rafamadriz/friendly-snippets'
+
+    -- rust lsp
+    use 'simrat39/rust-tools.nvim'
+
+    -- auto tag && auto pair
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+    use "windwp/nvim-ts-autotag"
+
+    -- git signs
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
 end)

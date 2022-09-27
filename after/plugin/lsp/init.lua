@@ -24,6 +24,8 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        ['<C-j>'] = cmp.mapping.select_next_item(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
 
@@ -69,34 +71,47 @@ end
 
 require("lspconfig").tsserver.setup(config())
 
-require("lspconfig").rust_analyzer.setup(config({
+local rt = require("rust-tools")
 
-    settings = {
-        rust = {
-            tools = { -- rust-tools options
-                autoSetHints = true,
-                hover_with_actions = true,
-                inlay_hints = {
-                    show_parameter_hints = false,
-                    parameter_hints_prefix = "",
-                    other_hints_prefix = "",
-                },
-            },
-            server = {
-                -- on_attach is a callback called when the language server attachs to the buffer
-                -- on_attach = on_attach,
-                settings = {
-                    ["rust-analyzer"] = {
-                        -- enable clippy on save
-                        checkOnSave = {
-                            command = "clippy"
-                        },
-                    }
-                }
-            },
-        }
-    }
-}))
+rt.setup({
+    server = {
+        on_attach = function(_, bufnr)
+            -- Hover actions
+            vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>vca", rt.code_action_group.code_action_group, { buffer = bufnr })
+            -- vim.keymap.set("n", "gd", rt.definition)
+        end,
+    },
+})
+
+-- require("lspconfig").rust_analyzer.setup(config({
+--     settings = {
+--         rust = {
+--             tools = { -- rust-tools options
+--                 autoSetHints = true,
+--                 hover_with_actions = true,
+--                 inlay_hints = {
+--                     show_parameter_hints = false,
+--                     parameter_hints_prefix = "",
+--                     other_hints_prefix = "",
+--                 },
+--             },
+--             server = {
+--                 -- on_attach is a callback called when the language server attachs to the buffer
+--                 -- on_attach = on_attach,
+--                 settings = {
+--                     ["rust-analyzer"] = {
+--                         -- enable clippy on save
+--                         checkOnSave = {
+--                             command = "clippy"
+--                         },
+--                     }
+--                 }
+--             },
+--         }
+--     }
+-- }))
 
 require("lspconfig").intelephense.setup(config())
 
@@ -106,4 +121,8 @@ require("lspconfig").sumneko_lua.setup(config({
             diagnostics = { globals = { "vim" } }
         }
     }
+}))
+
+require("lspconfig").volar.setup(config({
+    filetypes = { 'vue' }
 }))
