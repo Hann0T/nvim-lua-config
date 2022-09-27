@@ -15,6 +15,8 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
+vim.opt.ignorecase = true
+
 -- Give more space for displaying messages.
 vim.opt.cmdheight = 1
 

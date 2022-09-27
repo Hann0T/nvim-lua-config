@@ -8,6 +8,9 @@ local silent = { silent = true }
 -- open Netrw
 nnoremap("<leader>op", "<cmd>vsplit<CR><cmd>vertical resize 35<CR><cmd>Ex<CR>")
 
+-- open Terminal
+nnoremap("<leader>ot", "<cmd>split<CR><C-w>j<cmd>terminal<CR>i")
+
 -- exit insert mode
 inoremap("jk", "<Esc>")
 
@@ -50,6 +53,7 @@ nnoremap('<Leader>wj', '<C-w>j')
 nnoremap('<Leader>wl', '<C-w>l')
 nnoremap('<Leader>wt', '<C-w>t')
 nnoremap('<Leader>wb', '<C-w>b')
+nnoremap('<Leader>wq', '<C-w>q')
 
 -- Telescope
 nnoremap("<leader><leader>", "<cmd>Telescope find_files<cr>")
