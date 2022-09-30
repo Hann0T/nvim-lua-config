@@ -82,7 +82,17 @@ rt.setup({
             vim.keymap.set("n", "<Leader>vca", rt.code_action_group.code_action_group, { buffer = bufnr })
             -- vim.keymap.set("n", "gd", rt.definition)
         end,
-    },
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            ["rust-analyzer"] = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        },
+
+    }
 })
 
 -- require("lspconfig").rust_analyzer.setup(config({
@@ -123,6 +133,11 @@ require("lspconfig").sumneko_lua.setup(config({
     }
 }))
 
-require("lspconfig").volar.setup(config({
-    filetypes = { 'vue' }
-}))
+--require("lspconfig").volar.setup(config({
+--    filetypes = { 'vue' },
+--    init_options = {
+--        typescript = {
+--            serverPath = '/opt/homebrew/lib/node_modules/typescript/lib/tsserverlibrary.js',
+--        }
+--    }
+--}))

@@ -65,13 +65,16 @@ nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>")
 nnoremap("<leader>bk", ":bd<CR>")
 
 -- Git Fugitive
-nnoremap("<leader>gg", "<cmd>G<CR>")
+nnoremap("<leader>gg", "<cmd>tab G<CR>")
 
 -- Harpoon
 nnoremap("<C-a>", function() require("harpoon.mark").add_file() end, silent)
 nnoremap("<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, silent)
 
 nnoremap("<C-h>", function() require("harpoon.ui").nav_file(1) end, silent)
-nnoremap("<C-t>", function() require("harpoon.ui").nav_file(2) end, silent)
-nnoremap("<C-n>", function() require("harpoon.ui").nav_file(3) end, silent)
+nnoremap("<C-n>", function() require("harpoon.ui").nav_file(2) end, silent)
+nnoremap("<C-t>", function() require("harpoon.ui").nav_file(3) end, silent)
 nnoremap("<C-s>", function() require("harpoon.ui").nav_file(4) end, silent)
+
+-- kill all buffers but the current
+-- :%bd|e#
