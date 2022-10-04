@@ -27,4 +27,7 @@ vim.opt.updatetime = 50
 -- Use the clipboard of the OS
 vim.opt.clipboard = 'unnamedplus'
 
+-- Netrw
+vim.g.netrw_banner = 0
+
 vim.g.mapleader = " "

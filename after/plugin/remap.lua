@@ -6,7 +6,7 @@ local inoremap = Remap.inoremap
 local silent = { silent = true }
 
 -- open Netrw
-nnoremap("<leader>op", "<cmd>vsplit<CR><cmd>vertical resize 35<CR><cmd>Ex<CR>")
+nnoremap("<leader>op", "<cmd>Vex 25<CR>")
 
 -- open Terminal
 nnoremap("<leader>ot", "<cmd>split<CR><C-w>j<cmd>terminal<CR>i")
