@@ -38,6 +38,21 @@ require("lspconfig").sumneko_lua.setup {
     }
 }
 
+require("lspconfig").gopls.setup {
+    on_attach = M.on_attach,
+    cmd = {"gopls", "serve"},
+    filetypes = {"go", "gomod"},
+    root_dir = require('lspconfig/util').root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
+}
+
 --require("lspconfig").volar.setup(config({
 --    filetypes = { 'vue' },
 --    init_options = {
