@@ -57,6 +57,9 @@ return require('packer').startup(function(use)
     -- rust lsp
     use 'simrat39/rust-tools.nvim'
 
+    -- Lua vim api completion
+    use "folke/neodev.nvim"
+
     -- auto tag && auto pair
     use {
         "windwp/nvim-autopairs",
