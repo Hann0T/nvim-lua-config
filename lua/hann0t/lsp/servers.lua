@@ -1,5 +1,10 @@
 local M = require("hann0t.lsp.handlers")
 
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({
+    -- add any options here, or leave empty to use the default settings
+})
+
 require("lspconfig").tsserver.setup {
     on_attach = M.on_attach
 }
@@ -30,26 +35,26 @@ require("lspconfig").sumneko_lua.setup {
     on_attach = M.on_attach,
     settings = {
         Lua = {
-            diagnostics = { globals = { "vim" } }
+            -- diagnostics = { globals = { "vim" } }
+            completion = {
+                callSnippet = "Replace"
+            }
         },
-        workspace = {
-            library = vim.api.nvim_get_runtime_file("", true)
-        }
     }
 }
 
 require("lspconfig").gopls.setup {
     on_attach = M.on_attach,
-    cmd = {"gopls", "serve"},
-    filetypes = {"go", "gomod"},
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod" },
     root_dir = require('lspconfig/util').root_pattern("go.work", "go.mod", ".git"),
     settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
         },
-        staticcheck = true,
-      },
     },
 }
 
