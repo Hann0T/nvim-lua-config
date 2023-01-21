@@ -64,7 +64,7 @@ local function lsp_keymaps(bufnr)
         opts
     )
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fa", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fa", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 end
 
@@ -81,6 +81,6 @@ if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
