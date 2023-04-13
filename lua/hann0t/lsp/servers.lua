@@ -9,23 +9,35 @@ require("lspconfig").tsserver.setup {
     on_attach = M.on_attach
 }
 
-local rt = require("rust-tools")
-
-rt.setup({
-    server = {
-        on_attach = M.on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
+require("lspconfig").rust_analyzer.setup {
+    on_attach = M.on_attach,
+    settings = {
+        rust = {
+            tools = {
+                -- rust-tools options
+                autoSetHints = true,
+                hover_with_actions = true,
+                inlay_hints = {
+                    show_parameter_hints = true,
+                    parameter_hints_prefix = "*",
+                    other_hints_prefix = "~",
                 },
-            }
-        },
-
+            },
+            server = {
+                -- on_attach is a callback called when the language server attachs to the buffer
+                -- on_attach = on_attach,
+                settings = {
+                    ["rust-analyzer"] = {
+                        -- enable clippy on save
+                        checkOnSave = {
+                            command = "clippy"
+                        },
+                    }
+                }
+            },
+        }
     }
-})
+}
 
 require("lspconfig").intelephense.setup {
     on_attach = M.on_attach

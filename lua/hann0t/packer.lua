@@ -54,9 +54,6 @@ return require('packer').startup(function(use)
     -- a bunch of snippets
     use 'rafamadriz/friendly-snippets'
 
-    -- rust lsp
-    use 'simrat39/rust-tools.nvim'
-
     -- Lua vim api completion
     use "folke/neodev.nvim"
 
