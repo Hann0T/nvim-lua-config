@@ -9,22 +9,17 @@ require("lspconfig").tsserver.setup {
     on_attach = M.on_attach
 }
 
-local rt = require("rust-tools")
-
-rt.setup({
-    server = {
-        on_attach = M.on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        },
+vim.g.rustaceanvim = {
+  -- LSP configuration
+  server = {
+    on_attach = M.on_attach
+  },
+  tools = {
+    float_win_config = {
+      border = 'rounded'
     }
-})
+  }
+}
 
 require("lspconfig").intelephense.setup {
     on_attach = M.on_attach
