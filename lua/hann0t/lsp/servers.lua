@@ -1,11 +1,12 @@
 local M = require("hann0t.lsp.handlers")
+local lspconfig = require("lspconfig")
 
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 require("neodev").setup({
     -- add any options here, or leave empty to use the default settings
 })
 
-require("lspconfig").tsserver.setup {
+lspconfig.tsserver.setup {
     on_attach = M.on_attach
 }
 
@@ -21,11 +22,15 @@ vim.g.rustaceanvim = {
   }
 }
 
-require("lspconfig").intelephense.setup {
+lspconfig.intelephense.setup {
     on_attach = M.on_attach
 }
 
-require("lspconfig").lua_ls.setup {
+lspconfig.clangd.setup {
+    on_attach = M.on_attach,
+}
+
+lspconfig.lua_ls.setup {
     on_attach = M.on_attach,
     settings = {
         Lua = {
@@ -37,7 +42,7 @@ require("lspconfig").lua_ls.setup {
     }
 }
 
-require("lspconfig").gopls.setup {
+lspconfig.gopls.setup {
     on_attach = M.on_attach,
     cmd = { "gopls", "serve" },
     filetypes = { "go", "gomod" },
@@ -50,6 +55,19 @@ require("lspconfig").gopls.setup {
             staticcheck = true,
         },
     },
+}
+
+lspconfig.pylsp.setup{
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          -- maxLineLength = 100
+        }
+      }
+    }
+  }
 }
 
 --require("lspconfig").volar.setup(config({

@@ -9,7 +9,7 @@ local silent = { silent = true }
 nnoremap("<leader>op", "<cmd>Vex 25<CR>")
 
 -- open Terminal
-nnoremap("<leader>ot", "<cmd>split<CR><C-w>j<cmd>terminal<CR>i")
+-- nnoremap("<leader>ot", "<cmd>split<CR><C-w>j<cmd>terminal<CR>i")
 
 -- exit insert mode
 inoremap("jk", "<Esc>")
@@ -55,12 +55,6 @@ nnoremap('<Leader>wt', '<C-w>t')
 nnoremap('<Leader>wb', '<C-w>b')
 nnoremap('<Leader>wq', '<C-w>q')
 
--- Telescope
-nnoremap("<leader><leader>", "<cmd>Telescope find_files<cr>")
-nnoremap("<leader>fg", "<cmd>Telescope live_grep<cr>")
-nnoremap("<leader>,", "<cmd>Telescope buffers<cr>")
-nnoremap("<leader>fh", "<cmd>Telescope help_tags<cr>")
-
 -- delete buffer
 nnoremap("<leader>bk", ":bd<CR>")
 
@@ -78,6 +72,10 @@ nnoremap("<C-s>", function() require("harpoon.ui").nav_file(4) end, silent)
 
 -- Tabs
 nnoremap("<TAB>", "<cmd>tabNext<cr>")
+
+-- quick fix
+nnoremap("<C-k>", "<cmd>cnext<cr>zz")
+nnoremap("<C-j>", "<cmd>cprev<cr>zz")
 
 -- kill all buffers but the current
 -- :%bd|e#
